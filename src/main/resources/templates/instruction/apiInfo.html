@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:display="http://www.w3.org/1999/xhtml"
+      xmlns:div.display="http://www.w3.org/1999/xhtml" xmlns:row.display="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta charset="UTF-8" > </meta>
+    <title>龙柏API简介</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <td>API说明：</td>
+            <td>通过表名、页数、頁面大小,获取单页数据</td>
+        </tr>
+        <tr>
+            <td>相关文档：</td>
+            <td>提供API的表信息</td>
+        </tr>
+        <tr>
+            <td>接口地址：</td>
+            <td>http://180.153.108.40:8080/longboApis/jlzx/table_name/page_num/page_size</td>
+        </tr>
+        <tr>
+            <td>返回格式：</td>
+            <td>json(正确请求时)</td>
+        </tr>
+        <tr>
+            <td>请求方式：</td>
+            <td>HTTP协议，支持GET方法。</td>
+        </tr>
+        <tr>
+            <td>返回数据格式：</td>
+            <td>endRow:1000 <br/>
+                firstPage:1 <br/>
+                hasNextPage:true<br/>
+                hasPreviousPage:true<br/>
+                isFirstPage:false<br/>
+                isLastPage:false<br/>
+                lastPage:8<br/>
+                list:[{OPENDATE: 898099200000, CURRENCY: "美元", SECFNAME: "Avalon Holdings Corp-A",…},…]<br/>
+                navigateFirstPage:1<br/>
+                navigateLastPage:8<br/>
+                navigatePages:8<br/>
+                navigatepageNums:[1, 2, 3, 4, 5, 6, 7, 8]<br/>
+                nextPage:3<br/>
+                pageNum:2<br/>
+                pageSize:500<br/>
+                pages:16<br/>
+                prePage:1<br/>
+                size:500<br/>
+                startRow:501<br/>
+                total:7619</td>
+        </tr>
+        <tr>
+            <td>返回數據詳細：</td>
+            <td>
+                endRow:此页最后一行数据行数 <br/>
+                firstPage:第一页页码（是1,不是0） <br/>
+                hasNextPage:是否有下一页<br/>
+                hasPreviousPage:是否有前一页<br/>
+                isFirstPage:是否是首页<br/>
+                isLastPage:是否是最后一頁<br/>
+                lastPage:最后一页页码<br/>
+                list:表数据链表<br/>
+                navigateFirstPage:首頁页码<br/>
+                navigateLastPage:尾页页码<br/>
+                navigatePages:尾页页码<br/>
+                navigatepageNums:页码链表<br/>
+                nextPage:下页页码<br/>
+                pageNum:次页页码<br/>
+                pageSize:每页数量<br/>
+                pages:页总数<br/>
+                prePage:上页页码<br/>
+                size:此页行数（区别于pageSize）<br/>
+                startRow:起始行数<br/>
+                total:总行数
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

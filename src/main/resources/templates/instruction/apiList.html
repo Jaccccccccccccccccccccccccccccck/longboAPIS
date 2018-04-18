@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:display="http://www.w3.org/1999/xhtml"
+      xmlns:div.display="http://www.w3.org/1999/xhtml" xmlns:row.display="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta charset="UTF-8" > </meta>
+    <title>龙柏APIs使用简介</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+
+</head>
+<body>
+注：pageNum是页码，pageSize是页大小，可以自行选择
+<br/>
+以“JL_”开头的表为A股表，以“HK_”开头的表为港股，以“CSS_”开头的表为美股
+<table  class="table" border="1" >
+    <tr>
+        <th>表名称</th>
+        <th>表简单说明</th>
+        <th>对应API</th>
+
+    </tr>
+    <tr th:each="table_authorities : ${table_authorities_List}">
+        <td th:text="${table_authorities.table_name}"></td>
+        <td th:text="${table_authorities.table_info}"></td>
+        <td th:text="${'/jlzx/'+table_authorities.table_name+'/pageNum/pageSize'}"></td>
+
+
+    </tr>
+</table>
+</body>
+</html>

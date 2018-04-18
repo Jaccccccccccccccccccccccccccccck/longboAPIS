@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:display="http://www.w3.org/1999/xhtml"
+      xmlns:div.display="http://www.w3.org/1999/xhtml" xmlns:row.display="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+
+    <!-- MetisMenu CSS -->
+    <link th:href="@{/vendor/metisMenu/metisMenu.min.css}" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link th:href="@{/vendor/sbAdmin2/css/sb-admin-2.css}" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link th:href="@{/vendor/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css" />
+
+    <!-- Bootstrap table CSS -->
+    <link th:href="@{/vendor/bootstrap-table/css/bootstrap-table.css}" rel="stylesheet" type="text/css" />
+
+    <link th:href="@{/vendor/Bootstrap-Dual-Listbox/bootstrap-duallistbox.min.css}" rel="stylesheet" type="text/css" />
+
+
+
+
+</head>
+<body>
+<div class="content">
+    <div class="col-lg-12">
+        <form id="insertForm" th:action="@{/userManagement/user/add}"  method="post" th:object="${addUser}" style="display:none">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">新增用戶</a>
+                            <button type="submit" class="btn btn-primary" >添加用户</button>
+                            <button  type="button" class="btn btn-primary" th:onclick="'hideInsertTable()'" >关 闭</button>
+
+                            <!--<a  role="button" data-toggle="modal" th:onclick="'javascript:deleteOne('+${creditInfo_entity_update.ID}+');'">修改</a>-->
+                        </div>
+
+                    </div>
+
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="col-lg-4">
+                                    <label >登录用户名：</label>
+                                </div>
+                                <div class="col-lg-4">
+                                    <input class="form-control"  id="Iusername" th:field="*{username}"   required="required" />
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="col-lg-4">
+                                    <label >密码：</label>
+                                </div>
+                                <div class="col-lg-4">
+                                    <input class="form-control"  id="Ipassword"   th:field="*{password}"  required="required" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="col-lg-4">
+                                    <label>真实姓名：</label>
+                                </div>
+                                <div class="col-lg-4">
+                                    <input class="form-control"  ID="Itruename" th:field="*{truename}"  />
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="col-lg-4">
+                                    <label>邮箱：</label>
+                                </div>
+                                <div class="col-lg-8">
+                                    <input class="form-control"  ID="Iemailaddress" th:field="*{emailaddress}"  />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="col-lg-4">
+                                    <label>电话：</label>
+                                </div>
+                                <div class="col-lg-8">
+                                    <input class="form-control"  ID="Itelephone" type="number"  th:field="*{telephone}"  />
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="col-lg-4">
+                                    <label>qq：</label>
+                                </div>
+                                <div class="col-lg-8">
+                                    <input class="form-control"  ID="Iqq" th:field="*{qq}"  />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="col-lg-4">
+                                    <label>微信：</label>
+                                </div>
+                                <div class="col-lg-8">
+                                    <input class="form-control"  ID="Iwechat" th:field="*{wechat}"  />
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="col-lg-4">
+                                    <label>工作地址：</label>
+                                </div>
+                                <div class="col-lg-8">
+                                    <input class="form-control"  ID="Iworkaddress" th:field="*{workaddress}"  />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="col-lg-4">
+                                    <label>所属公司：</label>
+                                </div>
+                                <div class="col-lg-8">
+                                    <input class="form-control"  ID="Icompany" th:field="*{company}"  />
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="col-lg-4">
+                                    <label>公司部门：</label>
+                                </div>
+                                <div class="col-lg-8">
+                                    <input class="form-control"  ID="Idepartment" th:field="*{department}"  />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="col-lg-4">
+                                    <label>职位：</label>
+                                </div>
+                                <div class="col-lg-8">
+                                    <input class="form-control"  ID="Iposition" th:field="*{position}"  />
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="col-lg-4">
+                                    <label>到期日：</label>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="date" class="form-control pull-right datepicker"   id="Ienableduntil"  th:field="*{enableduntil}" required="required"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+    <div class="col-lg-12">
+        <form id="updateForm" th:action="@{/userManagement/user/modify}" th:object="${modifyUser}" method="post" style="display:none">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">修改用戶信息</a>
+                            <button type="submit" class="btn btn-primary" >更 新</button>
+                            <!--<button id="deleteButton" type="button" class="btn btn-primary" th:onclick="'javascript:deleteOne(\''+*{ID}+'\');'" >删 除</button>-->
+                            <button  type="button" class="btn btn-danger" th:onclick="'deleteUserById()'" >删 除</button>
+                            <button  type="button" class="btn btn-primary" th:onclick="'hideUpdateTable()'" >关 闭</button>
+
+                            <!--<a  role="button" data-toggle="modal" th:onclick="'javascript:deleteOne('+${creditInfo_entity_update.ID}+');'">修改</a>-->
+                        </div>
+
+                    </div>
+
+                </div>
+                <div id="" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="col-lg-4">
+                                    <label >编号：</label>
+                                </div>
+                                <div class="col-lg-4">
+                                    <input class="form-control"  id="Uid"  th:field="*{id}"  required="required" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="col-lg-4">
+                                    <label >密码：</label>
+                                </div>
+                                <div class="col-lg-4">
+                                    <input class="form-control"  id="Upassword"   th:field="*{password}"  required="required" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="col-lg-4">
+                                    <label >登录用户名：</label>
+                                </div>
+                                <div class="col-lg-4">
+                                    <input class="form-control"  id="Uusername" th:field="*{username}"   required="required" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="col-lg-4">
+                                    <label>真实姓名：</label>
+                                </div>
+                                <div class="col-lg-4">
+                                    <input class="form-control"  ID="Utruename" th:field="*{truename}"  />
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="col-lg-4">
+                                    <label>邮箱：</label>
+                                </div>
+                                <div class="col-lg-8">
+                                    <input class="form-control"  ID="Uemailaddress" th:field="*{emailaddress}" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="col-lg-4">
+                                    <label>电话：</label>
+                                </div>
+                                <div class="col-lg-8">
+                                    <input class="form-control"  ID="Utelephone"  th:field="*{telephone}" type="number" />
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="col-lg-4">
+                                    <label>qq：</label>
+                                </div>
+                                <div class="col-lg-8">
+                                    <input class="form-control"  ID="Uqq" th:field="*{qq}" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="col-lg-4">
+                                    <label>微信：</label>
+                                </div>
+                                <div class="col-lg-8">
+                                    <input class="form-control"  ID="Uwechat" th:field="*{wechat}" />
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="col-lg-4">
+                                    <label>工作地址：</label>
+                                </div>
+                                <div class="col-lg-8">
+                                    <input class="form-control"  ID="Uworkaddress" th:field="*{workaddress}"  />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="col-lg-4">
+                                    <label>所属公司：</label>
+                                </div>
+                                <div class="col-lg-8">
+                                    <input class="form-control"  ID="Ucompany" th:field="*{company}"  />
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="col-lg-4">
+                                    <label>公司部门：</label>
+                                </div>
+                                <div class="col-lg-8">
+                                    <input class="form-control"  ID="Udepartment" th:field="*{department}"  />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="col-lg-4">
+                                    <label>职位：</label>
+                                </div>
+                                <div class="col-lg-8">
+                                    <input class="form-control"  ID="Uposition" th:field="*{position}"  />
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="col-lg-4">
+                                    <label>到期日：</label>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="date" class="form-control pull-right datepicker"  name="SignedDate" id="Uenableduntil" th:field="*{enableduntil}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="col-lg-4">
+                                    <label>权限：</label>
+                                </div>
+                                <div class="col-lg-8">
+                                    <input class="form-control" ID="Uauthorities" th:field="*{authorities}" style="display: none" />
+                                    <button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#myModal" >查看权限</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- 模态框（Modal） -->
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                            &times;
+                                        </button>
+                                        <h4 class="modal-title" id="myModalLabel">
+                                            权限选择
+                                        </h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="col-sm-12">
+                                            <select multiple="multiple" size="10" name="duallistbox_demo1" class="demo1">
+                                            </select>
+                                            <br />
+                                            <!--<input id="showValue" type="button" value="show selected data" />-->
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                        </button>
+                                        <!--<button type="button" onclick="saveAuth()" class="btn btn-primary">-->
+                                            <!--提交更改-->
+                                        <!--</button>-->
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal -->
+                        </div>
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </form>
+
+    </div>
+    <div id="toolbar">
+        <a href="javascript:void(0);" class="btn btn-primary " onclick="createNewUser();">新增</a>
+        <!--<a href="javascript:void(0);" class="btn btn-danger" onclick="wf.resource_delete();"><i class="icon iconfont">&#xe612;</i>删除</a>-->
+    </div>
+    <table id="user-table" class="table-striped table-hover" data-mobile-responsive="true">
+        <thead>
+        <tr>
+            <th>编号</th>
+            <th>登录用户名</th>
+            <th>密码</th>
+            <th>真实姓名</th>
+            <th>邮箱</th>
+            <th>电话</th>
+            <th>qq</th>
+            <th>微信</th>
+            <th>工作地址</th>
+            <th>所属公司</th>
+            <th>公司部门</th>
+            <th>职位</th>
+            <th>到期日</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+
+    </table>
+
+</div>
+
+
+
+    <!-- jQuery -->
+    <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script th:src="@{/vendor/metisMenu/metisMenu.min.js}"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script th:src="@{/vendor/sbAdmin2/js/sb-admin-2.js}"></script>
+
+
+
+    <!-- Bootstrap Theme JavaScript -->
+    <script th:src="@{/vendor/bootstrap-table/bootstrap-table.js}"></script>
+
+    <script th:src="@{/vendor/Bootstrap-Dual-Listbox/jquery.bootstrap-duallistbox.min.js}"></script>
+
+    <script>
+        $("#user-table").bootstrapTable({ // 对应table标签的id
+            method: "get",
+            url: "user/getAll", // 获取表格数据的url
+            cache: false, // 设置为 false 禁用 AJAX 数据缓存， 默认为true
+            striped: true,  //表格显示条纹，默认为false
+            pagination: true, // 在表格底部显示分页组件，默认false
+            toolbar:"#toolbar",
+            Strick: true,                      //是否显示表格搜索
+            showRefresh: true,                  //是否显示刷新按钮
+            clickToSelect: true, //是否启用点击选中行
+            smartDisplay: false,//智能显示分页按钮
+            pageList: [10, 20], // 设置页面可以显示的数据条数
+            pageSize: 10, // 页面数据条数
+            pageNumber: 1, // 首页页码
+            sidePagination: 'server', // 设置为服务器端分页
+            sortName: 'id', // 要排序的字段
+            sortOrder: 'desc', // 排序规则
+            queryParamsType : "undefined",
+            queryParams: function (params) { // 请求服务器数据时发送的参数，可以在这里添加额外的查询参数，返回false则终止请求
+                var param = {
+                    pageNumber: params.pageNumber,
+                    pageSize: params.pageSize,
+                    sort : params.sortName
+                };
+                return param;
+            },
+            onClickRow: function ClickRow (row) {
+                console.log("click:" + row.id)
+                $("#insertForm").hide();
+                $("#updateForm").show();
+                $("#Uid").val(row.id);
+                $("#Uusername").val(row.username);
+                $("#Upassword").val(row.password);
+                $("#Utruename").val(row.truename);
+                $("#Uemailaddress").val(row.emailaddress);
+                $("#Utelephone").val(row.telephone);
+                $("#Uqq").val(row.qq);
+                $("#Uwechat").val(row.wechat);
+                $("#Uworkaddress").val(row.workaddress);
+                $("#Ucompany").val(row.company);
+                $("#Udepartment").val(row.department);
+                $("#Uposition").val(row.position);
+                $("#Uenableduntil").val(row.enableduntil);
+
+                $.ajax({
+                    url: "../userAuthoritiesManagement/getAuthoritiesByUsername",
+                    type: "post",
+                    async:false,//更改为同步
+                    data: {
+                        username: row.username,
+                        _csrf:$("[name='_csrf']").val(),
+                    },
+                    success: function (data) {
+                        //重新加载记录
+                        //重新加载数据
+//                        alert(data);
+                        $("#Uauthorities").val(data);
+                        initListBox();
+                    }
+                });
+
+            },
+
+            columns: [
+                {
+                    field: 'id', // 返回json数据中的name
+                    title: '编号', // 表格表头显示文字
+                }
+                , {
+                    field: 'username',
+                    title: '登录用户名',
+                }, {
+                    field: 'password',
+                    title: '密码',
+                }, {
+                    field: 'truename',
+                    title: '真实姓名',
+                }, {
+                    field: 'emailaddress',
+                    title: '邮箱',
+                }, {
+                    field: 'telephone',
+                    title: '电话',
+                }, {
+                    field: 'qq',
+                    title: 'qq',
+                }, {
+                    field: 'wechat',
+                    title: '微信',
+                }, {
+                    field: 'workaddress',
+                    title: '工作地址',
+                }, {
+                    field: 'company',
+                    title: '所属公司',
+                }, {
+                    field: 'department',
+                    title: '公司部门',
+                }, {
+                    field: 'position',
+                    title: '职位',
+                }, {
+                    field: 'enableduntil',
+                    title: '到期日',
+                }
+            ],
+            onLoadSuccess: function(){  //加载成功时执行
+                console.info("加载成功");
+            },
+            onLoadError: function(){  //加载失败时执行
+                console.info("加载数据失败");
+            }
+
+        })
+
+        //queryParam1：参数
+        //selectClass：select元素class属性
+        //selectedDataStr：选中数据，多个以,隔开
+        function initListBox() {
+            auths = $("#Uauthorities").val();
+//            alert(auths)
+            var objs = $.parseJSON(auths);
+            $(objs).each(function () {
+                var o = document.createElement("option");
+                o.value = this['authority'];
+                o.text = this['authority'];
+                if (this['isAuth'] == "1") {
+                    o.selected = 'selected';
+                }
+
+                $(".demo1")[0].options.add(o);
+            });
+                    //渲染dualListbox
+                    $('.demo1').bootstrapDualListbox({
+                        nonSelectedListLabel: 'Non-selected',
+                        selectedListLabel: 'Selected',
+                        preserveSelectionOnMove: 'moved',
+                    });
+
+        }
+
+
+//        function saveAuth() {
+//            newAuths = $('[name="duallistbox_demo1"]').val().toString();
+//            alert(newAuths)
+//            var newAuthsArray = newAuths.split(',');
+//            auths = $("#Uauthorities").val();
+//            var authsJson = $.parseJSON(auths);
+//            $.each(newAuthsArray, function (id,newAuthObj) {
+//                $.each(authsJson,function(id,authObj){
+//                    if(authObj['authority'] == newAuthObj ){
+//                        authObj["isAuth"] =1;
+//                    }
+//                })
+//
+//            })
+//            $("#Uauthorities").val(JSON.stringify(authsJson));
+//            alert($("#Uauthorities").val());
+//
+//            $('.demo1').modal('hide');
+//        }
+        $('#myModal').on('hidden.bs.modal', function () {
+            newAuths = $('[name="duallistbox_demo1"]').val().toString();
+//            alert(newAuths)
+            var newAuthsArray = newAuths.split(',');
+            auths = $("#Uauthorities").val();
+            var authsJson = $.parseJSON(auths);
+
+            $.each(authsJson,function(id,authObj){
+                    authObj["isAuth"] =0;
+
+            })
+            $.each(newAuthsArray, function (id,newAuthObj) {
+
+                $.each(authsJson,function(id,authObj){
+                    if(authObj['authority'] == newAuthObj ){
+                        authObj["isAuth"] =1;
+                    }
+                })
+
+            })
+            jsonString  =JSON.stringify(authsJson);
+            $("#Uauthorities").val(jsonString);
+//            alert($("#Uauthorities").val());
+
+
+        })
+
+
+        function deleteUserById() {
+            deleteId = $("#Uid").val();
+            _csrf = $("[name='_csrf']").val();
+            var msg = "您真的确定要删除id为"+deleteId+"的用户吗？";
+            if (confirm(msg) == true) {
+                $.ajax({
+                    url: "./user/deleteUserByid",
+                    type: "post",
+                    data: {
+                        id: deleteId,
+                        _csrf:_csrf,
+                    },
+                    success: function (data) {
+                        //重新加载记录
+                        //重新加载数据
+                        $("#updateForm").hide();
+                        $("#user-table").bootstrapTable('refresh', {url: './user/getAll'});
+                    }
+                });
+            }
+        }
+        
+        function createNewUser() {
+            $("#insertForm").show();
+            $("#updateForm").hide();
+        }
+
+        function hideUpdateTable(){
+            $("#updateForm").hide();
+        }
+
+        function hideInsertTable() {
+            $("#insertForm").hide();
+        }
+    </script>
+</body>
+</html>

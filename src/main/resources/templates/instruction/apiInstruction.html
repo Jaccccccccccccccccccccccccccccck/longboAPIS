@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:display="http://www.w3.org/1999/xhtml"
+      xmlns:div.display="http://www.w3.org/1999/xhtml" xmlns:row.display="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta charset="UTF-8" > </meta>
+    <title>龙柏APIs使用简介</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+
+</head>
+<body>
+    使用api前首先要验证用户，使用http get方法获得登录界面，然后验证后使用同一个session去访问api。
+    <br/>
+    get方法获取到/login,返回一个登录界面，然后用post方法将username、password、_crsf参数传回，即验证结束。（_crsf是在get方法请求到的登录界面中的一个隐藏属性，在post提交的时候必须带上）
+    <br/>
+    然后使用同一个session去访问api列表中的url，即可返回表信息
+    <br/>
+    <br/>
+    Java版API请求已经上传到github上，地址：https://github.com/Jaccccccccccccccccccccccccccccck/longboApiTest
+    <br/>
+    Python版API请求已经上传到github上，地址：https://github.com/Jaccccccccccccccccccccccccccccck/longboApisTest_py
+
+
+
+
+</body>
+</html>
