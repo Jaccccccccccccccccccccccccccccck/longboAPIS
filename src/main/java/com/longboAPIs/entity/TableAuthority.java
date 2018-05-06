@@ -22,7 +22,6 @@ public class TableAuthority {
         this.table_authority = table_authority;
     }
 
-
     public String getTable_name() {
         return table_name;
     }

@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:display="http://www.w3.org/1999/xhtml"
-      xmlns:div.display="http://www.w3.org/1999/xhtml" xmlns:row.display="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
 
@@ -32,11 +30,16 @@
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
     <![endif]-->
 
+    <style>
+        body {margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;overflow: hidden;}
+    </style>
 </head>
 
-<body style="overflow-y: scroll; overflow-x: scroll">
+<body >
+<!--style="overflow-y: scroll; overflow-x: scroll"-->
 
 <div id="wrapper">
 
@@ -93,6 +96,10 @@
                         <a href="#"><i class="fa fa-credit-card-alt fa-fw"></i> API使用</a>
                     </li>
 
+                    <li id="myAuthorities">
+                        <a href="#"><i class="fa fa-credit-card-alt fa-fw"></i> 我的权限 </a>
+                    </li>
+
                     <!--<li>-->
                         <!--<a href="#"><i class="fa fa-dashboard fa-fw"></i> API使用代码<span class="fa arrow"></span></a>-->
                         <!--<ul class="nav nav-second-level">-->
@@ -117,7 +124,7 @@
     <!-- Page Content -->
     <div id="page-wrapper" style="padding-left: 0px;">
         <!-- <div class="container-fluid"> -->
-        <iframe id="iframeMapping" src="" frameborder="0" height="840" width="1200" style="transform: scale(0.93); transform-origin: 0% 0%;"></iframe>
+        <iframe id="iframeMapping" src=""   width='100%' height='100%' frameborder='0'></iframe>
         <!-- </div> -->
         <!-- /.container-fluid -->
     </div>
@@ -149,9 +156,9 @@
     $('#howToUse').bind('click',function(){
         $('#iframeMapping').attr('src','apiInstruction');
     });
-//    $('#userInfo').bind('click',function(){
-//        $('#iframeMapping').attr('src','/userInfo');
-//    });
+   $('#myAuthorities').bind('click',function(){
+       $('#iframeMapping').attr('src','myAuthorities');
+   });
 //    $('#howToUseInJava').bind('click',function(){
 //        $('#iframeMapping').attr('src','/instruction/useInJava');
 //    });

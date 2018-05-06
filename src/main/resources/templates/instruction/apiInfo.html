@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:display="http://www.w3.org/1999/xhtml"
-      xmlns:div.display="http://www.w3.org/1999/xhtml" xmlns:row.display="http://www.w3.org/1999/xhtml" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml" >
 <head>
     <meta charset="UTF-8" > </meta>
     <title>龙柏API简介</title>
 
     <!-- Bootstrap Core CSS -->
     <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+    <!--<link th:href="@{/vendor/bootstrap-table/css/bootstrap-table.css}" rel="stylesheet" />-->
 
 </head>
 <body>
-    <table border="1">
+    <table class="table">
         <tr>
             <td>API说明：</td>
             <td>通过表名、页数、頁面大小,获取单页数据</td>
@@ -80,6 +79,16 @@
             </td>
         </tr>
     </table>
+    <!--<script th:src="@{/vendor/jquery/jquery.min.js}"></script>-->
+    <!--<script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>-->
+    <!--<script th:src="@{/vendor/bootstrap-table/bootstrap-table.js}"></script>-->
+    <!--<script th:src="@{/vendor/bootstrap-table/bootstrap-table-zh-CN.js}"></script>-->
+
+    <!--<script>-->
+      <!--$('#api_info_table').bootstrapTable({-->
+
+      <!--})-->
+    <!--</script>-->
 
 </body>
 </html>

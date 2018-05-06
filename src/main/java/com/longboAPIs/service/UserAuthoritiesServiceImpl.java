@@ -24,6 +24,11 @@ public class UserAuthoritiesServiceImpl implements UserAuthoritiesService {
     }
 
     @Override
+    public  List<TableAuthority> getTableAuthoritiesDetailByUsername(String username){
+        return userAuthoritiesDao.getTableAuthoritiesDetailByUsername(username);
+    }
+
+    @Override
     public List<HashMap<String,Integer>> getAuthoritiesByUsername(String username){
         return userAuthoritiesDao.getAuthoritiesByUsername(username);
     };

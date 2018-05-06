@@ -13,6 +13,10 @@ public interface UserAuthoritiesDao {
     @ResultType(TableAuthority.class)
     List<TableAuthority> getAllTableAuthorities();
 
+    @Select(value = "select table_name,table_authority,table_info from apis,(select distinct authorities.authority from users,authorities where users.userName = authorities.username and users.userName = #{username}) auth where apis.table_authority=auth.authority order by table_authority")
+    @ResultType(TableAuthority.class)
+    List<TableAuthority> getTableAuthoritiesDetailByUsername(String username);
+
     @Select(value = "select table_authority as authority, case when authority is not null then 1 else 0 end as isAuth from apis left join (select distinct authorities.authority from users,authorities where users.userName = authorities.username and users.userName = #{username}) auth on apis.table_authority=auth.authority order by table_authority")
     List<HashMap<String,Integer>> getAuthoritiesByUsername(String username);
 

@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface UserAuthoritiesService {
     List<TableAuthority> getAllTableAuthorities();
+    List<TableAuthority> getTableAuthoritiesDetailByUsername(String username);
     List<HashMap<String,Integer>> getAuthoritiesByUsername(String username);
     void modifyAuthorities(User user);
 }
