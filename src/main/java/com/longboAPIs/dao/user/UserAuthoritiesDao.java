@@ -9,11 +9,11 @@ import java.util.List;
 
 @Repository
 public interface UserAuthoritiesDao {
-    @Select(value = "Select table_name,table_authority,table_info from apis where enabled =1")
+    @Select(value = "Select table_name,table_authority,table_info from apis where enabled =1 order by table_name")
     @ResultType(TableAuthority.class)
     List<TableAuthority> getAllTableAuthorities();
 
-    @Select(value = "select table_authority as authority, case when authority is not null then 1 else 0 end as isAuth from apis left join (select distinct authorities.authority from users,authorities where users.userName = authorities.username and users.userName = #{username}) auth on apis.table_authority=auth.authority")
+    @Select(value = "select table_authority as authority, case when authority is not null then 1 else 0 end as isAuth from apis left join (select distinct authorities.authority from users,authorities where users.userName = authorities.username and users.userName = #{username}) auth on apis.table_authority=auth.authority order by table_authority")
     List<HashMap<String,Integer>> getAuthoritiesByUsername(String username);
 
     @Select(value = "select count(1)  from users,authorities where users.userName = authorities.username and users.userName = #{username} and authorities.authority =#{auth_name}")
